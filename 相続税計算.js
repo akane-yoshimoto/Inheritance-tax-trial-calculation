@@ -254,6 +254,7 @@ document.getElementById("button").onclick = function() {
         title:"相続税額(配偶者控除後)は"+ anser.toLocaleString() + "円です",
         text: "近くの税理士を調べますか？\n※配偶者控除を適用するには申告が必要です。",
         type: "info",
+        customClass: 'swal-wide',
         showCancelButton : "true",
         cancelButtonText : "いいえ",
         confirmButtonText: "調べる"
