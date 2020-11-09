@@ -223,5 +223,4 @@ document.getElementById("button").onclick = function() {
         var url = "https://www.google.co.jp/search?q=近くの税理士";
         window.open(url);
     });
-    return;
 };
