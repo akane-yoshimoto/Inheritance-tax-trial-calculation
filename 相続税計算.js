@@ -1,6 +1,8 @@
 (function(){
     document.getElementById("button").onclick = function() {
 
+        document.getElementById("output").innerHTML = "";
+
         //法定相続人の人数
         var number = document.getElementById("number").value;
         var nop;
@@ -207,8 +209,6 @@
         }
 
         var anser = Math.floor(InheritanceTaxAmount/1000)*1000;
-        document.getElementById("output").innerHTML = anser.toLocaleString() + "円";
-
         if(0 > anser) {
             return;
         }
@@ -224,5 +224,7 @@
             var url = "https://www.google.co.jp/search?q=近くの税理士";
             window.open(url);
         });
+
+        document.getElementById("output").innerHTML = anser.toLocaleString() + "円";
     };
 })();
