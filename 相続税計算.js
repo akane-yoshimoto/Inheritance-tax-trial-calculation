@@ -60,7 +60,6 @@ document.getElementById("button").onclick = function() {
                 title: "要確認",
                 text: "配偶者を除く法定相続人は0のはずです。",  
                 type: "error",   
-                customClass: 'swal-wide',
                 confirmButtonText: "OK"
             });
             return;
@@ -251,10 +250,9 @@ document.getElementById("button").onclick = function() {
     }
 
     swal({
-        title:"相続税額(配偶者控除後)は"+ anser.toLocaleString() + "円です",
-        text: "近くの税理士を調べますか？\n※配偶者控除を適用するには申告が必要です。",
+        title:anser.toLocaleString() + "円",
+        text: "近くの税理士を調べますか？",
         type: "info",
-        customClass: 'swal-wide',
         showCancelButton : "true",
         cancelButtonText : "いいえ",
         confirmButtonText: "調べる"
