@@ -191,5 +191,9 @@ ul {
         width: 70%;
         margin-top: 30px;
     }
+    
+    .swal-wide{
+        width:70%;
+    }
 
 }
