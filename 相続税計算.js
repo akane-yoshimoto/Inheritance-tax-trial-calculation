@@ -60,6 +60,7 @@ document.getElementById("button").onclick = function() {
                 title: "要確認",
                 text: "配偶者を除く法定相続人は0のはずです。",  
                 type: "error",   
+                customClass: 'swal-wide',
                 confirmButtonText: "OK"
             });
             return;
