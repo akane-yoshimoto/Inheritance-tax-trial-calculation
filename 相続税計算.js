@@ -2,10 +2,7 @@ document.getElementById("button").onclick = function() {
 
     //法定相続人の人数
     var number = document.getElementById("number").value;
-
-
     var nop;
-
     switch (number) {
         case '1' : nop = 1;
             break;
@@ -39,13 +36,11 @@ document.getElementById("button").onclick = function() {
     } else {
         BasicDeduction = (30000000 + (6000000 * nop));
     }
-
     console.log('基礎控除額は'+BasicDeduction+"円です");
 
     //法定相続割合の算出
     //変数otherに配偶者以外の相続人の続柄を入れる
     var Other = document.getElementsByName("other");
-
     for(var j = 0; j < Other.length ; j++) {
         if(Other[j].checked) {
             var other = Other[j].value;
@@ -53,9 +48,7 @@ document.getElementById("button").onclick = function() {
     }
 
     if(other === "other") {
-
         if(nop !== 0) {
-            
             swal({
                 title: "要確認",
                 text: "配偶者を除く法定相続人は0のはずです。",  
@@ -63,8 +56,8 @@ document.getElementById("button").onclick = function() {
                 confirmButtonText: "OK"
             });
             return;
-            }
         }
+    }
 
     //課税遺産総額
     var TotalTaxableHeritage;
@@ -104,7 +97,6 @@ document.getElementById("button").onclick = function() {
     var spouseLegalInheritance;
     spouseLegalInheritance = LegalInheritance;
     console.log("配偶者の法定相続分は"+spouseLegalInheritance+'/n');
-
     nop = parseInt(nop,10);
 
     //配偶者以外の1人当たりの法定相続分
@@ -117,35 +109,20 @@ document.getElementById("button").onclick = function() {
     console.log('配偶者の相続金額は'+taxSpouse+'円');
 
     if(10000000 >= taxSpouse) {
-
         var tax =  taxSpouse * 0.1;
-
     } else if( 10000000 <  taxSpouse &&  taxSpouse <= 30000000) {
-
         tax = taxSpouse * 0.15 -   500000;
-
     } else if( 30000000 <  taxSpouse && taxSpouse <=  50000000) {
-
         tax = taxSpouse * 0.2  -  2000000;
-
     } else if( 50000000 <  taxSpouse && taxSpouse <= 100000000) {
-
         tax = taxSpouse * 0.3  -  7000000;
-
     } else if(100000000 <  taxSpouse && taxSpouse <= 200000000) {
-
         tax = taxSpouse * 0.4 - 17000000;
-
     } else if(200000000 <  taxSpouse && taxSpouse <= 300000000) {
-
         tax = taxSpouse * 0.45 - 27000000;
-
     } else if(300000000 <  taxSpouse && taxSpouse <= 600000000) {
-
         tax = taxSpouse * 0.5  - 42000000;
-
     } else if(600000000 <  taxSpouse) {
-
         tax = taxSpouse * 0.55 - 72000000;
     }
 
@@ -158,35 +135,20 @@ document.getElementById("button").onclick = function() {
     o_tax = TotalTaxableHeritage * o_spouseLegalInheritance;
 
     if(10000000 >= o_tax) {
-
         tax =  o_tax * 0.1;
-
     } else if( 10000000 <  o_tax &&  o_tax <= 30000000) {
-
         tax = o_tax * 0.15 -   500000;
-
     } else if( 30000000 <  o_tax && o_tax <=  50000000) {
-
         tax = o_tax * 0.2  -  2000000;
-
     } else if( 50000000 <  o_tax && o_tax <= 100000000) {
-
         tax = o_tax * 0.3  -  7000000;
-
     } else if(100000000 <  o_tax && o_tax <= 200000000) {
-
         tax = o_tax * 0.4 - 17000000;
-
     } else if(200000000 <  o_tax && o_tax <= 300000000) {
-
         tax = o_tax * 0.45 - 27000000;
-
     } else if(300000000 <  o_tax && o_tax <= 600000000) {
-
         tax = o_tax * 0.5  - 42000000;
-
     } else if(600000000 <  o_tax){
-
         tax = o_tax * 0.55 - 72000000;
     }
 
@@ -217,13 +179,13 @@ document.getElementById("button").onclick = function() {
     InheritanceTaxAmount = totalTax - SpousalDeduction;
     console.log('相続税の総額(配偶者控除後)は'+InheritanceTaxAmount+'円');
 
-    if(other =='BandS') {
+    if(other === 'BandS') {
         InheritanceTaxAmount = InheritanceTaxAmount * 1.2;
         InheritanceTaxAmount = Math.floor(InheritanceTaxAmount/1000)*1000;
     }
     console.log("兄弟姉妹が相続人なので2割加算して"+InheritanceTaxAmount+'円');
 
-    if(spouse == 'no' && other == 'other') {
+    if(spouse === 'no' && other === 'other') {
         swal({
             title: "要確認",
             text: "計算できません。",  
@@ -240,6 +202,7 @@ document.getElementById("button").onclick = function() {
             type: "info",   
             confirmButtonText: "OK"
         });
+        return;
     }
 
     var anser = Math.floor(InheritanceTaxAmount/1000)*1000;
@@ -260,4 +223,5 @@ document.getElementById("button").onclick = function() {
         var url = "https://www.google.co.jp/search?q=近くの税理士";
         window.open(url);
     });
+    return;
 };
